@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: TutorCruncher
+providerId: tutorcruncher
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Tutoring
+- Education
+- Rate Limiting
+- Quotas
+- Pagination
+description: >-
+  TutorCruncher publishes a single, explicit REST API rate limit: 100 API
+  requests per minute per account. This applies across all endpoints and should
+  be respected when running bulk operations. Beyond the request-rate cap,
+  list-based GET requests are paginated at 100 objects per page, which bounds
+  response size and encourages cursor-style paging via the `next` URL. Webhook
+  delivery has its own retry/backoff behavior rather than a request-rate limit.
+notes: >-
+  The 100 requests/minute figure is stated in the API documentation. No separate
+  per-endpoint numeric caps are published. When bulk-loading, page through
+  results using the `next` link and stay under the per-minute ceiling.
+sources:
+- https://api.tutorcruncher.com/
+- https://help.tutorcruncher.com/en/articles/4843207-tutorcruncher-sockets
+responseCodes:
+  throttled: 429
+limits:
+- name: REST API Requests
+  scope: account
+  metric: requests
+  limit: 100 per minute
+  notes: Explicit documented limit across all API endpoints.
+- name: List Pagination
+  scope: request
+  metric: objects
+  limit: 100 per page
+  notes: All list-based GET endpoints return up to 100 objects per page with count/next/previous/results.
+- name: Webhook Delivery Retries
+  scope: integration
+  metric: deliveries
+  limit: up to 4 retries with exponential backoff (1s, 10s, 100s, 1000s)
+  notes: Retries fire on timeout, non-response, or 5xx. Endpoints exceeding a 20% failure rate are auto-disabled.
+policies:
+- name: Bulk Operation Pacing
+  description: Stay under 100 requests/minute for bulk operations; page through large result sets via the next URL rather than issuing many parallel requests.
+- name: Backoff Strategy
+  description: On a 429 response, back off and retry; implement exponential backoff with jitter.
+- name: Webhook Reliability
+  description: Webhook endpoints must return promptly and with 2xx; sustained failures (>20%) auto-disable the integration and must be re-enabled.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

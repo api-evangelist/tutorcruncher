@@ -1,0 +1,167 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: TutorCruncher
+providerId: tutorcruncher
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Tutoring
+- Education
+- Business Management
+- Payments
+- Plans
+description: >-
+  TutorCruncher is sold as a tiered monthly SaaS subscription with three plans -
+  Pay as you go, Startup, and Enterprise - each carrying a base monthly fee plus
+  payment-processing (transaction) fees on money moved through the platform.
+  API access, custom JavaScript/CSS, and custom integrations are Enterprise-tier
+  features. Prices below are the published US list rates and can change; verify
+  on the pricing page during reconciliation.
+notes: >-
+  The API itself carries no separate metered fee - it is gated to the Enterprise
+  plan. Transaction fees apply on top of the base monthly fee whenever payments
+  are processed. International card, Amex/Diners/JCB/UnionPay, and offline-payment
+  surcharges apply per plan.
+sources:
+- https://tutorcruncher.com/pricing/us
+- https://tutorcruncher.com/pricing/gb
+- https://api.tutorcruncher.com/
+plans:
+- id: tutorcruncher-payg
+  name: Pay as you go
+  type: paid
+  description: >-
+    Entry tier for smaller operations. Core tutoring management, scheduling,
+    invoicing, and integrated payments. Does not include API access.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $30/month
+    userMultiplied: false
+  - label: Card Payment Fee
+    name: card_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.85% of card payments processed
+    userMultiplied: false
+  - label: Offline Payment Fee
+    name: offline_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1% of offline / non-integrated payments
+    userMultiplied: false
+  elements:
+  - name: Client, Recipient, Contractor Management
+  - name: Scheduling and Invoicing
+  - name: Integrated Payments
+- id: tutorcruncher-startup
+  name: Startup
+  type: paid
+  description: >-
+    Mid tier with lower transaction fees and more features for growing
+    tutoring businesses. Does not include full API access.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $80/month
+    userMultiplied: false
+  - label: Card Payment Fee
+    name: card_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.5% of card payments processed
+    userMultiplied: false
+  - label: Offline Payment Fee
+    name: offline_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.65% of offline / non-integrated payments
+    userMultiplied: false
+  elements:
+  - name: Everything in Pay as you go
+  - name: Lower Transaction Fees
+  - name: Additional Features
+- id: tutorcruncher-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Top tier that unlocks the REST API, custom JavaScript and CSS, custom
+    integrations, subscription billing for recurring payments, and unlimited
+    technical support. Bespoke card rates for high volume.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $240/month
+    userMultiplied: false
+  - label: Card Payment Fee
+    name: card_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: competitive / negotiated for high volume
+    userMultiplied: false
+  - label: Offline Payment Fee
+    name: offline_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.5% of offline / non-integrated payments
+    userMultiplied: false
+  elements:
+  - name: REST API Access
+  - name: Custom JavaScript and CSS
+  - name: Custom Integrations
+  - name: Subscription Billing
+  - name: Unlimited Technical Support
+surcharges:
+- name: International Cards
+  price: +1.5% of the payment
+  appliesTo: all plans
+- name: Amex / Diners Club / JCB / UnionPay / Prepaid
+  price: +2% of the payment
+  appliesTo: all plans
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,221 @@
+aid: tutorcruncher
+url: https://raw.githubusercontent.com/api-evangelist/tutorcruncher/refs/heads/main/apis.yml
+name: TutorCruncher
+kind: company
+description: TutorCruncher is tutoring business management software for agencies,
+  companies, and independent tutors - handling clients, students, tutors, lesson
+  scheduling, invoicing, and payments. Its documented REST API (base
+  https://app.tutorcruncher.com/api/, token-authenticated) exposes clients,
+  recipients (students), contractors (tutors), agents, services (jobs),
+  appointments (lessons), invoices, payment orders, proforma invoices, ad hoc
+  charges, and reference data, with HTTP webhooks for event notifications. Its
+  "Socket" product is a JavaScript embed for publishing public tutor and lesson
+  listings on a provider's own website - not a WebSocket API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Tutoring
+- Education
+- Business Management
+- Scheduling
+- Invoicing
+- Payments
+- EdTech
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: tutorcruncher:tutorcruncher-clients-api
+  name: TutorCruncher Clients API
+  tags:
+  - Clients
+  - CRM
+  - Users
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: Documentation
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete clients - the paying
+    customers (parents or organizations) in a TutorCruncher account. Clients are
+    matched by ID (v2) and can carry recipients, labels, pipeline stages, and
+    balance information.
+- aid: tutorcruncher:tutorcruncher-recipients-api
+  name: TutorCruncher Recipients (Students) API
+  tags:
+  - Recipients
+  - Students
+  - Users
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Manage recipients - the students who receive tutoring. Create, list,
+    retrieve, update, and delete recipients, who are linked to a paying client and
+    enrolled onto services (jobs) and appointments (lessons).
+- aid: tutorcruncher:tutorcruncher-contractors-api
+  name: TutorCruncher Contractors (Tutors) API
+  tags:
+  - Contractors
+  - Tutors
+  - Availability
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Manage contractors - the tutors delivering lessons. Create, list,
+    retrieve, update, and delete contractors, read their availability, and manage
+    skills, subjects, and qualification levels. Public contractor profiles are also
+    exposed read-only for website listings.
+- aid: tutorcruncher:tutorcruncher-services-api
+  name: TutorCruncher Services (Jobs) API
+  tags:
+  - Services
+  - Jobs
+  - Enrollment
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Manage services (also called jobs) - the tutoring engagements that
+    tie recipients and contractors together with a rate and subject. Create, list,
+    retrieve, update, and delete services and add or remove contractors and
+    recipients from a service.
+- aid: tutorcruncher:tutorcruncher-appointments-api
+  name: TutorCruncher Appointments (Lessons) API
+  tags:
+  - Appointments
+  - Lessons
+  - Scheduling
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Schedule and manage appointments - the individual lessons or sessions
+    delivered under a service. Create, list, retrieve, update, and delete
+    appointments and manage the recipients and contractors attending each one.
+- aid: tutorcruncher:tutorcruncher-invoices-api
+  name: TutorCruncher Invoices API
+  tags:
+  - Invoices
+  - Billing
+  - Finance
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: List, retrieve, and create client invoices and take payment against
+    them. Invoices bill clients for lessons and charges delivered through the
+    platform; the take-payment action charges a client's stored payment method.
+- aid: tutorcruncher:tutorcruncher-payments-api
+  name: TutorCruncher Payments API
+  tags:
+  - Payments
+  - Payouts
+  - Charges
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Manage the money movement around tutoring - payment orders (contractor
+    payouts), proforma invoices (client credit requests / top-ups) with take-payment,
+    and ad hoc charges and their categories. List, retrieve, create, and settle each.
+- aid: tutorcruncher:tutorcruncher-webhooks-api
+  name: TutorCruncher Webhooks and Action Types API
+  tags:
+  - Webhooks
+  - Events
+  - Integrations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.tutorcruncher.com/
+  baseURL: https://app.tutorcruncher.com/api
+  properties:
+  - url: https://api.tutorcruncher.com/
+    type: Documentation
+  - url: https://help.tutorcruncher.com/en/articles/4843207-tutorcruncher-sockets
+    type: Documentation
+  - url: openapi/tutorcruncher-openapi.yml
+    type: OpenAPI
+  - url: collections/tutorcruncher.postman_collection.json
+    type: PostmanCollection
+  - url: collections/tutorcruncher.opencollection.json
+    type: OpenCollection
+  description: Discover the event catalog and consume webhooks. List the 150+ action
+    types that can fire, then receive HTTP webhook POSTs (signed with an
+    HMAC-SHA256 Webhook-Signature header, retried with exponential backoff) at a URL
+    configured in System > Settings > Integrations. This is HTTP push, not a
+    WebSocket.
+common:
+- type: GitHubOrganization
+  url: https://github.com/tutorcruncher
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tutorcruncher
+- type: Website
+  url: https://tutorcruncher.com
+- type: Documentation
+  url: https://api.tutorcruncher.com/
+- type: Plans
+  url: plans/tutorcruncher-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tutorcruncher-rate-limits.yml
+- type: FinOps
+  url: finops/tutorcruncher-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

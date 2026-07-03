@@ -1,0 +1,135 @@
+aid: tutorcruncher
+name: TutorCruncher
+review:
+  question: Does TutorCruncher expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. TutorCruncher's public API is
+    request/response REST over HTTPS (base https://app.tutorcruncher.com/api/).
+    Its event/notification mechanism is HTTP webhooks - TutorCruncher POSTs a
+    signed JSON payload to a URL you configure under System > Settings >
+    Integrations. That is server-to-endpoint HTTP push, not a WebSocket or SSE
+    stream, and there is no client-consumable server-push transport on
+    TutorCruncher's own API to model. TutorCruncher's "Socket" product is a
+    JavaScript embed (cdn.tutorcruncher.com/socket/latest/socket.js) that renders
+    public tutor and lesson listings on a provider's website; despite the name it
+    is a front-end widget, not a WebSocket API.
+findings:
+  summary: |
+    TutorCruncher does not publish a documented public WebSocket API. The
+    platform exposes a REST API at https://app.tutorcruncher.com/api/,
+    authenticated with a private API key sent as `Authorization: token <API
+    KEY>`, rate limited to 100 requests/minute, with list endpoints paginated at
+    100 objects per page (count/next/previous/results). The API is now v2 (v1 was
+    deprecated 2025-07-03); in v2, users are updated by ID via POST. Real
+    resources include clients, recipients (students), contractors (tutors),
+    agents, services (jobs), appointments (lessons), invoices, payment orders,
+    proforma invoices, ad hoc charges, and reference data (subjects, countries,
+    skills, qualification levels, labels, pipeline stages, action types).
+    Asynchronous event delivery is via HTTP webhooks: TutorCruncher POSTs an
+    `events` array to a configured URL, signs it with an HMAC-SHA256
+    Webhook-Signature header, retries up to 4 times with exponential backoff
+    (1s/10s/100s/1000s), and auto-disables endpoints that exceed a 20% failure
+    rate. No ws:// or wss:// endpoint is documented anywhere.
+  socketClarification: |
+    "TutorCruncher Socket" is NOT a WebSocket. It is a JavaScript embed loaded
+    via <script src="https://cdn.tutorcruncher.com/socket/latest/socket.js">
+    that publishes public tutor listings, lesson listings, and enquiry forms on
+    a customer's own website. The name refers to the embeddable widget product,
+    not to a network socket / WebSocket transport.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://app.tutorcruncher.com/api
+      documented: true
+      note: Token-authenticated request/response REST. All documented resources.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: HTTP POST push to a configured URL, HMAC-SHA256 signed, retried with exponential backoff. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: JavaScript Embed (Socket)
+      scheme: https
+      documented: true
+      note: cdn.tutorcruncher.com/socket/latest/socket.js front-end widget for public listings. Not a WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in TutorCruncher's API reference or help center as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://app.tutorcruncher.com/api/clients/
+    - POST   https://app.tutorcruncher.com/api/clients/
+    - GET    https://app.tutorcruncher.com/api/clients/{id}/
+    - POST   https://app.tutorcruncher.com/api/clients/{id}/
+    - DELETE https://app.tutorcruncher.com/api/clients/{id}/
+    - GET    https://app.tutorcruncher.com/api/recipients/
+    - POST   https://app.tutorcruncher.com/api/recipients/
+    - GET    https://app.tutorcruncher.com/api/recipients/{id}/
+    - GET    https://app.tutorcruncher.com/api/contractors/
+    - POST   https://app.tutorcruncher.com/api/contractors/
+    - GET    https://app.tutorcruncher.com/api/contractors/{id}/
+    - GET    https://app.tutorcruncher.com/api/contractors/{id}/availability/
+    - GET    https://app.tutorcruncher.com/api/public-contractors/
+    - GET    https://app.tutorcruncher.com/api/agents/
+    - GET    https://app.tutorcruncher.com/api/services/
+    - POST   https://app.tutorcruncher.com/api/services/
+    - GET    https://app.tutorcruncher.com/api/services/{id}/
+    - POST   https://app.tutorcruncher.com/api/services/{id}/add-contractor/
+    - POST   https://app.tutorcruncher.com/api/services/{id}/remove-contractor/
+    - POST   https://app.tutorcruncher.com/api/services/{id}/add-recipient/
+    - POST   https://app.tutorcruncher.com/api/services/{id}/remove-recipient/
+    - GET    https://app.tutorcruncher.com/api/appointments/
+    - POST   https://app.tutorcruncher.com/api/appointments/
+    - GET    https://app.tutorcruncher.com/api/appointments/{id}/
+    - GET    https://app.tutorcruncher.com/api/invoices/
+    - GET    https://app.tutorcruncher.com/api/invoices/{id}/
+    - POST   https://app.tutorcruncher.com/api/invoices/{id}/take-payment/
+    - GET    https://app.tutorcruncher.com/api/payment-orders/
+    - GET    https://app.tutorcruncher.com/api/payment-orders/{id}/
+    - POST   https://app.tutorcruncher.com/api/payment-orders/{id}/take-payment/
+    - GET    https://app.tutorcruncher.com/api/proforma-invoices/
+    - POST   https://app.tutorcruncher.com/api/proforma-invoices/{id}/take-payment/
+    - GET    https://app.tutorcruncher.com/api/adhoccharges/
+    - GET    https://app.tutorcruncher.com/api/ahc-categories/
+    - GET    https://app.tutorcruncher.com/api/subjects/
+    - GET    https://app.tutorcruncher.com/api/countries/
+    - GET    https://app.tutorcruncher.com/api/contractor-skills/
+    - GET    https://app.tutorcruncher.com/api/qualification-levels/
+    - GET    https://app.tutorcruncher.com/api/labels/
+    - GET    https://app.tutorcruncher.com/api/pipeline-stages/
+    - GET    https://app.tutorcruncher.com/api/action-types/
+  endpointsModeled:
+    - note: >-
+        The OpenAPI document models the standard CRUD verbs (list/create/get/
+        update/delete) for each resource per TutorCruncher's documented REST
+        conventions. Exact write payload fields for some resources were inferred
+        from the documented model and should be confirmed field-by-field against
+        the live reference during reconciliation.
+sources:
+  - url: https://api.tutorcruncher.com/
+    type: APIReference
+    note: Canonical API reference (tutorcruncher.com/api redirects here). Base URL, token auth, 100 req/min, pagination, resources, webhooks.
+  - url: https://help.tutorcruncher.com/en/articles/4843207-tutorcruncher-sockets
+    type: Documentation
+    note: Explains TutorCruncher Sockets - a JavaScript embed for public listings, not a WebSocket.
+  - url: https://help.tutorcruncher.com/en/articles/8255881-getting-started-with-tutorcruncher-socket
+    type: Documentation
+    note: Getting started with Socket embed (socket.js).
+  - url: https://github.com/tutorcruncher/tc-api-docs
+    type: SourceCode
+    note: Source of the API documentation site.
+  - url: https://tutorcruncher.com/pricing/us
+    type: Pricing
+    note: Three tiers (Pay as you go $30, Startup $80, Enterprise $240); API access is Enterprise-only; transaction fees per tier.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. TutorCruncher's public API is
+    request/response REST, and its asynchronous surface is HTTP webhooks
+    (server-to-endpoint push), not a client-consumable WebSocket or SSE stream.
+    No AsyncAPI document was created because there is no server-push streaming
+    transport on TutorCruncher's own API to model, and the "Socket" product is a
+    front-end JavaScript embed rather than a network/WebSocket API.

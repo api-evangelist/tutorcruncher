@@ -1,0 +1,230 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "Authorization",
+        "value": "token {{apiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Clients", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List clients.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/clients/" },
+          "docs": "List clients, paginated 100 per page."
+        },
+        {
+          "info": { "name": "Create a client.", "type": "http" },
+          "http": { "method": "POST", "url": "https://app.tutorcruncher.com/api/clients/", "body": { "type": "json", "data": "{\"last_name\": \"Doe\"}" } },
+          "docs": "Create a client. last_name is required."
+        },
+        {
+          "info": { "name": "Retrieve a client.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Client ID." }]
+          }
+        },
+        {
+          "info": { "name": "Update a client.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Client ID." }],
+            "body": { "type": "json", "data": "{\"last_name\": \"Doe\"}" }
+          },
+          "docs": "In v2, update a client by ID via POST."
+        },
+        {
+          "info": { "name": "Delete a client.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Client ID." }]
+          }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Recipients", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List recipients.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/recipients/" },
+          "docs": "List recipients (students)."
+        },
+        {
+          "info": { "name": "Create a recipient.", "type": "http" },
+          "http": { "method": "POST", "url": "https://app.tutorcruncher.com/api/recipients/", "body": { "type": "json", "data": "{\"last_name\": \"Doe\", \"client\": 1}" } }
+        },
+        {
+          "info": { "name": "Retrieve a recipient.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/recipients/:id/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Recipient ID." }]
+          }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Contractors", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List contractors.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/contractors/" },
+          "docs": "List contractors (tutors)."
+        },
+        {
+          "info": { "name": "Create a contractor.", "type": "http" },
+          "http": { "method": "POST", "url": "https://app.tutorcruncher.com/api/contractors/", "body": { "type": "json", "data": "{\"last_name\": \"Tutor\"}" } }
+        },
+        {
+          "info": { "name": "Get contractor availability.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/contractors/:id/availability/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Contractor ID." }]
+          }
+        },
+        {
+          "info": { "name": "List public contractors.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/public-contractors/" },
+          "docs": "Read-only public tutor profiles for website listings."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Services", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List services.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/services/" },
+          "docs": "List services (jobs)."
+        },
+        {
+          "info": { "name": "Create a service.", "type": "http" },
+          "http": { "method": "POST", "url": "https://app.tutorcruncher.com/api/services/", "body": { "type": "json", "data": "{\"name\": \"Maths Tuition\"}" } }
+        },
+        {
+          "info": { "name": "Add contractor to service.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/services/:id/add-contractor/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Service ID." }],
+            "body": { "type": "json", "data": "{\"contractor\": 1}" }
+          }
+        },
+        {
+          "info": { "name": "Add recipient to service.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/services/:id/add-recipient/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Service ID." }],
+            "body": { "type": "json", "data": "{\"recipient\": 1}" }
+          }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Appointments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List appointments.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/appointments/" },
+          "docs": "List appointments (lessons)."
+        },
+        {
+          "info": { "name": "Create an appointment.", "type": "http" },
+          "http": { "method": "POST", "url": "https://app.tutorcruncher.com/api/appointments/", "body": { "type": "json", "data": "{\"service\": 1, \"start\": \"2026-07-10T15:00:00Z\", \"finish\": \"2026-07-10T16:00:00Z\"}" } }
+        },
+        {
+          "info": { "name": "Retrieve an appointment.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/appointments/:id/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Appointment ID." }]
+          }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List invoices.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/invoices/" }
+        },
+        {
+          "info": { "name": "Take payment for an invoice.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/invoices/:id/take-payment/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Invoice ID." }],
+            "body": { "type": "json", "data": "{}" }
+          }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Payments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List payment orders.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/payment-orders/" },
+          "docs": "List payment orders (contractor payouts)."
+        },
+        {
+          "info": { "name": "Take payment for a payment order.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/payment-orders/:id/take-payment/",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Payment order ID." }],
+            "body": { "type": "json", "data": "{}" }
+          }
+        },
+        {
+          "info": { "name": "List proforma invoices.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/proforma-invoices/" }
+        },
+        {
+          "info": { "name": "List ad hoc charges.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/adhoccharges/" }
+        },
+        {
+          "info": { "name": "List ad hoc charge categories.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/ahc-categories/" }
+        }
+      ]
+    },
+    {
+      "info": { "name": "Reference & Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List subjects.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/subjects/" }
+        },
+        {
+          "info": { "name": "List countries.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/countries/" }
+        },
+        {
+          "info": { "name": "List webhook action types.", "type": "http" },
+          "http": { "method": "GET", "url": "https://app.tutorcruncher.com/api/action-types/" },
+          "docs": "Catalog of 150+ action types that can trigger a webhook."
+        }
+      ]
+    }
+  ]
+}

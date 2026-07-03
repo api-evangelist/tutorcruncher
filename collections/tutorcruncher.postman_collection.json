@@ -1,0 +1,329 @@
+{
+  "info": {
+    "name": "TutorCruncher API",
+    "description": "REST API for TutorCruncher tutoring business management software. Base URL: https://app.tutorcruncher.com/api/. Authentication is a private API key (from Integrations) sent as the Authorization header: token <API KEY>. All list endpoints are paginated at 100 objects per page; requests are rate limited to 100 per minute. This targets API v2 (v1 deprecated 2025-07-03), where users are updated by ID.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization", "type": "string" },
+      { "key": "value", "value": "token {{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://app.tutorcruncher.com/api", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "List clients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/clients/", "host": ["{{baseUrl}}"], "path": ["clients", ""] },
+            "description": "List clients, paginated 100 per page."
+          }
+        },
+        {
+          "name": "Create a client",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/clients/", "host": ["{{baseUrl}}"], "path": ["clients", ""] },
+            "description": "Create a client. last_name is required."
+          }
+        },
+        {
+          "name": "Retrieve a client",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/clients/:id/", "host": ["{{baseUrl}}"], "path": ["clients", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "Update a client",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\"\n}" },
+            "url": { "raw": "{{baseUrl}}/clients/:id/", "host": ["{{baseUrl}}"], "path": ["clients", ":id", ""], "variable": [{ "key": "id", "value": "1" }] },
+            "description": "In v2, update a client by ID via POST."
+          }
+        },
+        {
+          "name": "Delete a client",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/clients/:id/", "host": ["{{baseUrl}}"], "path": ["clients", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recipients",
+      "item": [
+        {
+          "name": "List recipients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/recipients/", "host": ["{{baseUrl}}"], "path": ["recipients", ""] },
+            "description": "List recipients (students)."
+          }
+        },
+        {
+          "name": "Create a recipient",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Sam\",\n  \"last_name\": \"Doe\",\n  \"client\": 1\n}" },
+            "url": { "raw": "{{baseUrl}}/recipients/", "host": ["{{baseUrl}}"], "path": ["recipients", ""] }
+          }
+        },
+        {
+          "name": "Retrieve a recipient",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/recipients/:id/", "host": ["{{baseUrl}}"], "path": ["recipients", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contractors",
+      "item": [
+        {
+          "name": "List contractors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/contractors/", "host": ["{{baseUrl}}"], "path": ["contractors", ""] },
+            "description": "List contractors (tutors)."
+          }
+        },
+        {
+          "name": "Create a contractor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Alex\",\n  \"last_name\": \"Tutor\",\n  \"email\": \"alex@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/contractors/", "host": ["{{baseUrl}}"], "path": ["contractors", ""] }
+          }
+        },
+        {
+          "name": "Retrieve a contractor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/contractors/:id/", "host": ["{{baseUrl}}"], "path": ["contractors", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "Get contractor availability",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/contractors/:id/availability/", "host": ["{{baseUrl}}"], "path": ["contractors", ":id", "availability", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "List public contractors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/public-contractors/", "host": ["{{baseUrl}}"], "path": ["public-contractors", ""] },
+            "description": "Read-only public tutor profiles for website listings."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "List services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/services/", "host": ["{{baseUrl}}"], "path": ["services", ""] },
+            "description": "List services (jobs)."
+          }
+        },
+        {
+          "name": "Create a service",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Maths Tuition\",\n  \"dft_charge_type\": \"hourly\",\n  \"dft_charge_rate\": \"40.00\"\n}" },
+            "url": { "raw": "{{baseUrl}}/services/", "host": ["{{baseUrl}}"], "path": ["services", ""] }
+          }
+        },
+        {
+          "name": "Add contractor to service",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"contractor\": 1\n}" },
+            "url": { "raw": "{{baseUrl}}/services/:id/add-contractor/", "host": ["{{baseUrl}}"], "path": ["services", ":id", "add-contractor", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "Add recipient to service",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"recipient\": 1\n}" },
+            "url": { "raw": "{{baseUrl}}/services/:id/add-recipient/", "host": ["{{baseUrl}}"], "path": ["services", ":id", "add-recipient", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "List appointments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/", "host": ["{{baseUrl}}"], "path": ["appointments", ""] },
+            "description": "List appointments (lessons)."
+          }
+        },
+        {
+          "name": "Create an appointment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"service\": 1,\n  \"start\": \"2026-07-10T15:00:00Z\",\n  \"finish\": \"2026-07-10T16:00:00Z\",\n  \"topic\": \"Algebra\"\n}" },
+            "url": { "raw": "{{baseUrl}}/appointments/", "host": ["{{baseUrl}}"], "path": ["appointments", ""] }
+          }
+        },
+        {
+          "name": "Retrieve an appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/:id/", "host": ["{{baseUrl}}"], "path": ["appointments", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/", "host": ["{{baseUrl}}"], "path": ["invoices", ""] }
+          }
+        },
+        {
+          "name": "Retrieve an invoice",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:id/", "host": ["{{baseUrl}}"], "path": ["invoices", ":id", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "Take payment for an invoice",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/invoices/:id/take-payment/", "host": ["{{baseUrl}}"], "path": ["invoices", ":id", "take-payment", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "List payment orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payment-orders/", "host": ["{{baseUrl}}"], "path": ["payment-orders", ""] },
+            "description": "List payment orders (contractor payouts)."
+          }
+        },
+        {
+          "name": "Take payment for a payment order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/payment-orders/:id/take-payment/", "host": ["{{baseUrl}}"], "path": ["payment-orders", ":id", "take-payment", ""], "variable": [{ "key": "id", "value": "1" }] }
+          }
+        },
+        {
+          "name": "List proforma invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/proforma-invoices/", "host": ["{{baseUrl}}"], "path": ["proforma-invoices", ""] }
+          }
+        },
+        {
+          "name": "List ad hoc charges",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/adhoccharges/", "host": ["{{baseUrl}}"], "path": ["adhoccharges", ""] }
+          }
+        },
+        {
+          "name": "List ad hoc charge categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/ahc-categories/", "host": ["{{baseUrl}}"], "path": ["ahc-categories", ""] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reference & Webhooks",
+      "item": [
+        {
+          "name": "List subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/subjects/", "host": ["{{baseUrl}}"], "path": ["subjects", ""] }
+          }
+        },
+        {
+          "name": "List countries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries/", "host": ["{{baseUrl}}"], "path": ["countries", ""] }
+          }
+        },
+        {
+          "name": "List webhook action types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/action-types/", "host": ["{{baseUrl}}"], "path": ["action-types", ""] },
+            "description": "Catalog of 150+ action types that can trigger a webhook."
+          }
+        }
+      ]
+    }
+  ]
+}

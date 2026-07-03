@@ -1,0 +1,90 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: TutorCruncher
+providerId: tutorcruncher
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Tutoring
+- Education
+- FinOps
+- Cost Management
+- Payments
+- FOCUS
+description: >-
+  FinOps view of TutorCruncher spend. TutorCruncher is a tiered SaaS
+  subscription (Pay as you go $30, Startup $80, Enterprise $240 per month on US
+  list pricing) with API access gated to the Enterprise tier. The dominant
+  variable cost is payment-processing (transaction) fees charged on money moved
+  through the platform - a card-payment percentage that decreases with higher
+  tiers, plus surcharges for international cards and certain card networks, and a
+  smaller percentage on offline/non-integrated payments. There is no separate
+  per-call API fee. Cost is therefore driven by subscription tier plus payment
+  volume, not by API usage.
+notes: >-
+  Reconcile current base prices and transaction rates against the pricing page.
+  API automation does not add metered API cost, but automating more payment flows
+  will increase transaction-fee spend proportionally to processed volume.
+sources:
+- https://tutorcruncher.com/pricing/us
+- https://api.tutorcruncher.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: TutorCruncher
+serviceCategory: Business Management Software
+billingModel:
+  pricingCategory: Subscription-Plus-Usage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Tax
+meters:
+- name: subscription_base
+  description: Fixed monthly subscription fee for the chosen plan tier.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: card_transaction_fees
+  description: Percentage fee charged on card payments processed through the platform (3.85% / 3.5% / negotiated by tier).
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: offline_transaction_fees
+  description: Percentage fee on offline / non-integrated payments (1% / 0.65% / 0.5% by tier).
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: card_surcharges
+  description: Additional surcharges for international cards (+1.5%) and Amex/Diners/JCB/UnionPay/prepaid cards (+2%).
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - card_type
+principles:
+- name: Visibility
+  description: Track subscription tier plus the split of card vs offline payment volume and the surcharge-eligible payment mix.
+- name: Allocation
+  description: Attribute transaction fees to the branches, services, or clients whose payments generated them.
+- name: Optimization
+  description: Move to a higher tier when payment volume makes the lower per-transaction rate cheaper than the higher base fee; steer payments toward lower-fee methods and away from surcharge-eligible cards where possible.
+- name: Accountability
+  description: Review monthly base + transaction spend against processed payment volume; confirm API automation is not inflating surcharge-eligible flows.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
