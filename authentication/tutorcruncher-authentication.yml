@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tutorcruncher-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Private API key sent as: Authorization: token <API KEY>'
+  sources:
+  - openapi/tutorcruncher-openapi.yml

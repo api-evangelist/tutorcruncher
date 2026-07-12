@@ -202,6 +202,12 @@ apis:
     configured in System > Settings > Integrations. This is HTTP push, not a
     WebSocket.
 common:
+- type: VulnerabilityDisclosure
+  url: security/tutorcruncher-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/tutorcruncher-domain-security.yml
+- type: Authentication
+  url: authentication/tutorcruncher-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/tutorcruncher
 - type: LinkedIn
@@ -219,3 +225,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+- type: Blog
+  url: https://tutorcruncher.com/blog
