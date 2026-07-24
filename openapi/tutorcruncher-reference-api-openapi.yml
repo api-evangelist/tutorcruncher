@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: TutorCruncher Agents Reference API
+  description: 'REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.
+
+    Base URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.
+
+    Note: TutorCruncher''s "Socket" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.'
+  version: '2.0'
+  contact:
+    name: TutorCruncher
+    url: https://tutorcruncher.com
+  license:
+    name: API documentation - TutorCruncher Terms
+    url: https://tutorcruncher.com/terms-and-conditions
+servers:
+- url: https://app.tutorcruncher.com/api
+  description: TutorCruncher API
+security:
+- tokenAuth: []
+tags:
+- name: Reference
+  description: Reference data - subjects, countries, categories, action types.
+paths:
+  /subjects/:
+    get:
+      operationId: listSubjects
+      tags:
+      - Reference
+      summary: List subjects
+      responses:
+        '200':
+          description: List of subjects.
+  /countries/:
+    get:
+      operationId: listCountries
+      tags:
+      - Reference
+      summary: List countries
+      responses:
+        '200':
+          description: List of countries.
+  /contractor-skills/:
+    get:
+      operationId: listContractorSkills
+      tags:
+      - Reference
+      summary: List contractor skills
+      responses:
+        '200':
+          description: List of contractor skills.
+  /qualification-levels/:
+    get:
+      operationId: listQualificationLevels
+      tags:
+      - Reference
+      summary: List qualification levels
+      responses:
+        '200':
+          description: List of qualification levels.
+  /labels/:
+    get:
+      operationId: listLabels
+      tags:
+      - Reference
+      summary: List labels
+      responses:
+        '200':
+          description: List of labels.
+  /pipeline-stages/:
+    get:
+      operationId: listPipelineStages
+      tags:
+      - Reference
+      summary: List pipeline stages
+      responses:
+        '200':
+          description: List of pipeline stages.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Private API key sent as: Authorization: token <API KEY>'

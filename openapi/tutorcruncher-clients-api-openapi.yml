@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: TutorCruncher Agents Clients API
+  description: 'REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.
+
+    Base URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.
+
+    Note: TutorCruncher''s "Socket" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.'
+  version: '2.0'
+  contact:
+    name: TutorCruncher
+    url: https://tutorcruncher.com
+  license:
+    name: API documentation - TutorCruncher Terms
+    url: https://tutorcruncher.com/terms-and-conditions
+servers:
+- url: https://app.tutorcruncher.com/api
+  description: TutorCruncher API
+security:
+- tokenAuth: []
+tags:
+- name: Clients
+  description: Paying customers (parents or organizations).
+paths:
+  /clients/:
+    get:
+      operationId: listClients
+      tags:
+      - Clients
+      summary: List clients
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of clients.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createClient
+      tags:
+      - Clients
+      summary: Create a client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '201':
+          description: Client created.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /clients/{id}/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getClient
+      tags:
+      - Clients
+      summary: Retrieve a client
+      responses:
+        '200':
+          description: A client.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: updateClient
+      tags:
+      - Clients
+      summary: Update a client
+      description: In API v2, clients are updated by ID via POST.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '200':
+          description: Client updated.
+    delete:
+      operationId: deleteClient
+      tags:
+      - Clients
+      summary: Delete a client
+      responses:
+        '204':
+          description: Client deleted.
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+    NotFound:
+      description: Object not found.
+  schemas:
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            type: object
+    Client:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+        pipeline_stage:
+          type: integer
+          nullable: true
+        labels:
+          type: array
+          items:
+            type: integer
+      required:
+      - last_name
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The object ID.
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for paginated results (100 objects per page).
+      schema:
+        type: integer
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Private API key sent as: Authorization: token <API KEY>'

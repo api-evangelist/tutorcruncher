@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: TutorCruncher Agents Payments API
+  description: 'REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.
+
+    Base URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.
+
+    Note: TutorCruncher''s "Socket" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.'
+  version: '2.0'
+  contact:
+    name: TutorCruncher
+    url: https://tutorcruncher.com
+  license:
+    name: API documentation - TutorCruncher Terms
+    url: https://tutorcruncher.com/terms-and-conditions
+servers:
+- url: https://app.tutorcruncher.com/api
+  description: TutorCruncher API
+security:
+- tokenAuth: []
+tags:
+- name: Payments
+  description: Payment orders, proforma invoices, and ad hoc charges.
+paths:
+  /payment-orders/:
+    get:
+      operationId: listPaymentOrders
+      tags:
+      - Payments
+      summary: List payment orders (contractor payouts)
+      responses:
+        '200':
+          description: Paginated list of payment orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedList'
+  /payment-orders/{id}/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getPaymentOrder
+      tags:
+      - Payments
+      summary: Retrieve a payment order
+      responses:
+        '200':
+          description: A payment order.
+  /payment-orders/{id}/take-payment/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    post:
+      operationId: takePaymentOrderPayment
+      tags:
+      - Payments
+      summary: Take payment for a payment order
+      responses:
+        '200':
+          description: Payment taken.
+  /proforma-invoices/:
+    get:
+      operationId: listProformaInvoices
+      tags:
+      - Payments
+      summary: List proforma invoices (credit requests)
+      responses:
+        '200':
+          description: Paginated list of proforma invoices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedList'
+    post:
+      operationId: createProformaInvoice
+      tags:
+      - Payments
+      summary: Create a proforma invoice
+      responses:
+        '201':
+          description: Proforma invoice created.
+  /proforma-invoices/{id}/take-payment/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    post:
+      operationId: takeProformaPayment
+      tags:
+      - Payments
+      summary: Take payment for a proforma invoice
+      responses:
+        '200':
+          description: Payment taken.
+  /adhoccharges/:
+    get:
+      operationId: listAdHocCharges
+      tags:
+      - Payments
+      summary: List ad hoc charges
+      responses:
+        '200':
+          description: Paginated list of ad hoc charges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedList'
+    post:
+      operationId: createAdHocCharge
+      tags:
+      - Payments
+      summary: Create an ad hoc charge
+      responses:
+        '201':
+          description: Ad hoc charge created.
+  /ahc-categories/:
+    get:
+      operationId: listAdHocChargeCategories
+      tags:
+      - Payments
+      summary: List ad hoc charge categories
+      responses:
+        '200':
+          description: List of ad hoc charge categories.
+components:
+  schemas:
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            type: object
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The object ID.
+      schema:
+        type: integer
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Private API key sent as: Authorization: token <API KEY>'

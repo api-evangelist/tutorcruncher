@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: TutorCruncher Agents Webhooks API
+  description: 'REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.
+
+    Base URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.
+
+    Note: TutorCruncher''s "Socket" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.'
+  version: '2.0'
+  contact:
+    name: TutorCruncher
+    url: https://tutorcruncher.com
+  license:
+    name: API documentation - TutorCruncher Terms
+    url: https://tutorcruncher.com/terms-and-conditions
+servers:
+- url: https://app.tutorcruncher.com/api
+  description: TutorCruncher API
+security:
+- tokenAuth: []
+tags:
+- name: Webhooks
+  description: Webhook event catalog (action types).
+paths:
+  /action-types/:
+    get:
+      operationId: listActionTypes
+      tags:
+      - Webhooks
+      summary: List webhook action types
+      description: Returns the catalog of 150+ action types that can trigger a webhook - the `action` values delivered in the webhook `events` payload.
+      responses:
+        '200':
+          description: List of action types.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Private API key sent as: Authorization: token <API KEY>'
