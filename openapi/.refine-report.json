@@ -1,0 +1,32 @@
+{
+  "provider": "tutorcruncher",
+  "sources": [
+    "tutorcruncher-agents-api-openapi.yml",
+    "tutorcruncher-appointments-api-openapi.yml",
+    "tutorcruncher-clients-api-openapi.yml",
+    "tutorcruncher-contractors-api-openapi.yml",
+    "tutorcruncher-invoices-api-openapi.yml",
+    "tutorcruncher-payments-api-openapi.yml",
+    "tutorcruncher-recipients-api-openapi.yml",
+    "tutorcruncher-reference-api-openapi.yml",
+    "tutorcruncher-services-api-openapi.yml",
+    "tutorcruncher-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "tutorcruncher-agents-api-openapi.yml",
+    "tutorcruncher-appointments-api-openapi.yml",
+    "tutorcruncher-clients-api-openapi.yml",
+    "tutorcruncher-contractors-api-openapi.yml",
+    "tutorcruncher-invoices-api-openapi.yml",
+    "tutorcruncher-payments-api-openapi.yml",
+    "tutorcruncher-recipients-api-openapi.yml",
+    "tutorcruncher-reference-api-openapi.yml",
+    "tutorcruncher-services-api-openapi.yml",
+    "tutorcruncher-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
