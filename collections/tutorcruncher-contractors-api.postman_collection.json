@@ -1,0 +1,683 @@
+{
+  "item": [
+    {
+      "id": "2334d5ef-97c9-414b-9ec2-7f4b2923dc74",
+      "name": "Contractors",
+      "description": {
+        "content": "Tutors who deliver lessons.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eccdd54c-1f33-483a-b0a4-19d8a564d0bc",
+          "name": "List contractors (tutors)",
+          "request": {
+            "name": "List contractors (tutors)",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for paginated results (100 objects per page)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6e0b3a3-ca6d-43e0-99f4-32e68e5a4222",
+              "name": "Paginated list of contractors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5801,\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7976497-db5c-4b80-94ac-b8c02a60cef1",
+          "name": "Create a contractor",
+          "request": {
+            "name": "Create a contractor",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"status\": \"<string>\",\n  \"skills\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"qualifications\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79983fc0-beb1-4fdb-9fa9-274d58ea5fbc",
+              "name": "Contractor created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"status\": \"<string>\",\n  \"skills\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"qualifications\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fb0a22b-14f6-411d-8201-3603aaf35c13",
+          "name": "Retrieve a contractor",
+          "request": {
+            "name": "Retrieve a contractor",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfc5f542-131d-4046-ab9e-76869c6c264d",
+              "name": "A contractor.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"status\": \"<string>\",\n  \"skills\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"qualifications\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4eba0453-fcfe-4ecb-a5b2-13fa6b33b42d",
+          "name": "Update a contractor",
+          "request": {
+            "name": "Update a contractor",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"status\": \"<string>\",\n  \"skills\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"qualifications\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "298eff26-d82b-41e3-a8cf-012135f5474c",
+              "name": "Contractor updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"status\": \"<string>\",\n  \"skills\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"qualifications\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80640dd2-4591-4814-bbeb-13ab31b432b0",
+          "name": "Delete a contractor",
+          "request": {
+            "name": "Delete a contractor",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "005cd593-2c78-4ab5-807c-ccedecd7847b",
+              "name": "Contractor deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b405898-7854-4c26-94d7-28efe8e24254",
+          "name": "Get contractor availability",
+          "request": {
+            "name": "Get contractor availability",
+            "description": {},
+            "url": {
+              "path": [
+                "contractors",
+                ":id",
+                "availability",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "907725d8-7918-4fa8-b78d-f89811a5377e",
+              "name": "Availability slots for the contractor.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractors",
+                    ":id",
+                    "availability",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e787540-ba01-4430-93d7-e5edfb386a02",
+          "name": "List public contractor profiles",
+          "request": {
+            "name": "List public contractor profiles",
+            "description": {
+              "content": "Read-only public tutor profiles for website listings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public-contractors",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e810e113-c01d-4382-b407-d7407b27a292",
+              "name": "Paginated list of public contractor profiles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public-contractors",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4258,\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.tutorcruncher.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a18299d5-7957-4c7b-bb8f-ebd3cebc58b9",
+    "name": "TutorCruncher Agents Contractors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.\nBase URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.\nNote: TutorCruncher's \"Socket\" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.\n\nContact Support:\n Name: TutorCruncher",
+      "type": "text/plain"
+    }
+  }
+}

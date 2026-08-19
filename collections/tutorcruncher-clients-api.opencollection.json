@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents Clients API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/clients/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results (100 objects per page)."
+              }
+            ]
+          },
+          "docs": "List clients"
+        },
+        {
+          "info": {
+            "name": "Create a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/clients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a client"
+        },
+        {
+          "info": {
+            "name": "Retrieve a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Retrieve a client"
+        },
+        {
+          "info": {
+            "name": "Update a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "In API v2, clients are updated by ID via POST."
+        },
+        {
+          "info": {
+            "name": "Delete a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.tutorcruncher.com/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Delete a client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

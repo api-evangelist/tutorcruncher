@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "163e55b6-7f8c-4608-9d0b-0d91778c90a1",
+      "name": "Reference",
+      "description": {
+        "content": "Reference data - subjects, countries, categories, action types.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db7f1ccd-c7d8-42be-8fc6-e01a637cfa64",
+          "name": "List subjects",
+          "request": {
+            "name": "List subjects",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0e67343-bf61-4ffe-8b36-32942fa8dc70",
+              "name": "List of subjects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4162db78-ab0d-48e4-8efb-df5a029c4141",
+          "name": "List countries",
+          "request": {
+            "name": "List countries",
+            "description": {},
+            "url": {
+              "path": [
+                "countries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a81f4cb-1c3b-4cd0-ae90-243d03c9d1cd",
+              "name": "List of countries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "countries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed0d04ee-8242-4d8a-bc43-e8802898da04",
+          "name": "List contractor skills",
+          "request": {
+            "name": "List contractor skills",
+            "description": {},
+            "url": {
+              "path": [
+                "contractor-skills",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "625e6dac-b15d-468d-84e9-316c84aa4b51",
+              "name": "List of contractor skills.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contractor-skills",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59a8c664-490e-40e7-92c5-dec0de29c7ff",
+          "name": "List qualification levels",
+          "request": {
+            "name": "List qualification levels",
+            "description": {},
+            "url": {
+              "path": [
+                "qualification-levels",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59323061-0fc6-4e55-a9e6-a583cca01fcb",
+              "name": "List of qualification levels.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qualification-levels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71f151c9-38d1-4fe4-8101-dcbf8d78040c",
+          "name": "List labels",
+          "request": {
+            "name": "List labels",
+            "description": {},
+            "url": {
+              "path": [
+                "labels",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "243cba28-e549-41b6-91fa-6bbc815b3697",
+              "name": "List of labels.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d93f734-79e9-42f6-a8f9-10a9ffc10bb1",
+          "name": "List pipeline stages",
+          "request": {
+            "name": "List pipeline stages",
+            "description": {},
+            "url": {
+              "path": [
+                "pipeline-stages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "610f2b08-f166-4f0e-8a5f-0317145e61e4",
+              "name": "List of pipeline stages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline-stages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.tutorcruncher.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a74806a8-77fd-41d0-a3d7-2637bc62332f",
+    "name": "TutorCruncher Agents Reference API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.\nBase URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.\nNote: TutorCruncher's \"Socket\" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.\n\nContact Support:\n Name: TutorCruncher",
+      "type": "text/plain"
+    }
+  }
+}

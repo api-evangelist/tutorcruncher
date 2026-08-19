@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List agents (affiliates)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/agents/"
+          },
+          "docs": "List agents (affiliates)"
+        },
+        {
+          "info": {
+            "name": "Create an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/agents/"
+          },
+          "docs": "Create an agent"
+        },
+        {
+          "info": {
+            "name": "Retrieve an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/agents/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Retrieve an agent"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents Webhooks API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhook action types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/action-types/"
+          },
+          "docs": "Returns the catalog of 150+ action types that can trigger a webhook - the `action` values delivered in the webhook `events` payload."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

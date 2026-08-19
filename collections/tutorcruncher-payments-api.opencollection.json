@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents Payments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payment orders (contractor payouts)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/payment-orders/"
+          },
+          "docs": "List payment orders (contractor payouts)"
+        },
+        {
+          "info": {
+            "name": "Retrieve a payment order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/payment-orders/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Retrieve a payment order"
+        },
+        {
+          "info": {
+            "name": "Take payment for a payment order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/payment-orders/:id/take-payment/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Take payment for a payment order"
+        },
+        {
+          "info": {
+            "name": "List proforma invoices (credit requests)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/proforma-invoices/"
+          },
+          "docs": "List proforma invoices (credit requests)"
+        },
+        {
+          "info": {
+            "name": "Create a proforma invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/proforma-invoices/"
+          },
+          "docs": "Create a proforma invoice"
+        },
+        {
+          "info": {
+            "name": "Take payment for a proforma invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/proforma-invoices/:id/take-payment/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Take payment for a proforma invoice"
+        },
+        {
+          "info": {
+            "name": "List ad hoc charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/adhoccharges/"
+          },
+          "docs": "List ad hoc charges"
+        },
+        {
+          "info": {
+            "name": "Create an ad hoc charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/adhoccharges/"
+          },
+          "docs": "Create an ad hoc charge"
+        },
+        {
+          "info": {
+            "name": "List ad hoc charge categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/ahc-categories/"
+          },
+          "docs": "List ad hoc charge categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

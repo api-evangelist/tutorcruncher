@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents Recipients API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recipients (students)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/recipients/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results (100 objects per page)."
+              }
+            ]
+          },
+          "docs": "List recipients (students)"
+        },
+        {
+          "info": {
+            "name": "Create a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/recipients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a recipient"
+        },
+        {
+          "info": {
+            "name": "Retrieve a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/recipients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Retrieve a recipient"
+        },
+        {
+          "info": {
+            "name": "Update a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.tutorcruncher.com/api/recipients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a recipient"
+        },
+        {
+          "info": {
+            "name": "Delete a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.tutorcruncher.com/api/recipients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The object ID."
+              }
+            ]
+          },
+          "docs": "Delete a recipient"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

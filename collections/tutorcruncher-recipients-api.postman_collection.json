@@ -1,0 +1,516 @@
+{
+  "item": [
+    {
+      "id": "8b9b5d4c-78d1-4677-a2dd-a79db666e33d",
+      "name": "Recipients",
+      "description": {
+        "content": "Students who receive tutoring.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e17cc0db-55da-48ee-9458-760e55a16514",
+          "name": "List recipients (students)",
+          "request": {
+            "name": "List recipients (students)",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for paginated results (100 objects per page)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02218334-5f0d-4f29-afd2-7639aacd25bd",
+              "name": "Paginated list of recipients.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6161,\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b325c81-cfad-48e7-aba0-e4845240d2f0",
+          "name": "Create a recipient",
+          "request": {
+            "name": "Create a recipient",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"client\": \"<integer>\",\n  \"date_of_birth\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7210b7f-75c1-4cf9-9a94-f2d7d33d30a8",
+              "name": "Recipient created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"client\": \"<integer>\",\n  \"date_of_birth\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "888c8b35-9634-4693-8dc9-77ec45f44102",
+          "name": "Retrieve a recipient",
+          "request": {
+            "name": "Retrieve a recipient",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03ac5045-f340-404b-88a9-8283226fd10b",
+              "name": "A recipient.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"client\": \"<integer>\",\n  \"date_of_birth\": \"<date>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93d80b65-a3a9-4a65-a17f-405e9387333e",
+          "name": "Update a recipient",
+          "request": {
+            "name": "Update a recipient",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"client\": \"<integer>\",\n  \"date_of_birth\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6aebb602-a017-4f68-bc8e-7ece15e3ca36",
+              "name": "Recipient updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"last_name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"client\": \"<integer>\",\n  \"date_of_birth\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8035618-d300-4e09-9227-c515df52f706",
+          "name": "Delete a recipient",
+          "request": {
+            "name": "Delete a recipient",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The object ID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f927680-f30f-4f95-bff5-2b53b8a4634b",
+              "name": "Recipient deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The object ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.tutorcruncher.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3be0ab80-d852-4fe5-9f1d-c48d24907138",
+    "name": "TutorCruncher Agents Recipients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for TutorCruncher, tutoring business management software for agencies, companies, and independent tutors. The API exposes the core domain - clients, recipients (students), contractors (tutors), agents, services (jobs), appointments (lessons), invoices, payment orders, proforma invoices, ad hoc charges, and reference data - plus HTTP webhooks for event notifications.\nBase URL: https://app.tutorcruncher.com/api/. Authentication uses a private API key (found under Integrations) sent in the Authorization header as `token <API KEY>`. All list endpoints are paginated with up to 100 objects per page and return `count`, `next`, `previous`, and `results`. Requests are rate limited to 100 per minute. This document targets API v2 (v1 was deprecated 2025-07-03); in v2, users are updated by ID (for example `POST /api/clients/{id}/`) rather than by email.\nNote: TutorCruncher's \"Socket\" is a JavaScript embed (https://cdn.tutorcruncher.com/socket/latest/socket.js) for publishing public tutor and lesson listings on a website; it is not a WebSocket API and is not modeled here. Event delivery is via HTTP webhooks.\n\nContact Support:\n Name: TutorCruncher",
+      "type": "text/plain"
+    }
+  }
+}

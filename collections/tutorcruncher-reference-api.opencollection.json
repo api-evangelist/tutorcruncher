@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TutorCruncher Agents Reference API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/subjects/"
+          },
+          "docs": "List subjects"
+        },
+        {
+          "info": {
+            "name": "List countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/countries/"
+          },
+          "docs": "List countries"
+        },
+        {
+          "info": {
+            "name": "List contractor skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/contractor-skills/"
+          },
+          "docs": "List contractor skills"
+        },
+        {
+          "info": {
+            "name": "List qualification levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/qualification-levels/"
+          },
+          "docs": "List qualification levels"
+        },
+        {
+          "info": {
+            "name": "List labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/labels/"
+          },
+          "docs": "List labels"
+        },
+        {
+          "info": {
+            "name": "List pipeline stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.tutorcruncher.com/api/pipeline-stages/"
+          },
+          "docs": "List pipeline stages"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
