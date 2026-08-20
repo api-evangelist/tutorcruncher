@@ -223,6 +223,8 @@ apis:
   humanURL: https://api.tutorcruncher.com/
   baseURL: https://app.tutorcruncher.com/api
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
