@@ -11,6 +11,18 @@ description: TutorCruncher is tutoring business management software for agencies
   charges, and reference data, with HTTP webhooks for event notifications. Its
   "Socket" product is a JavaScript embed for publishing public tutor and lesson
   listings on a provider's own website - not a WebSocket API.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
