@@ -252,6 +252,9 @@ apis:
   - type: Documentation
     url: https://help.tutorcruncher.com/en/articles/4843207-tutorcruncher-sockets
 common:
+- type: CapabilityMap
+  url: capabilities/tutorcruncher-capability-edges.yml
+  name: TutorCruncher Business Capability Map
 - type: AgenticAccess
   url: agentic-access/tutorcruncher-agentic-access.yml
 - type: VulnerabilityDisclosure

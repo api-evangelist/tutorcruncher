@@ -1,0 +1,54 @@
+slug: tutorcruncher
+provider: TutorCruncher
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Appointments
+  spec_file: tutorcruncher-appointments-api-openapi.yml
+  capability_id: BC-4730
+  capability_id_l1: BC-4730
+  capability_name: Teaching & Learning Operations Management
+  confidence: 0.8
+  evidence: GET /appointments/ "List appointments (lessons)"; POST /appointments/ "Create an appointment"
+  reason: Scheduling and lifecycle management of tutoring lessons is day-to-day teaching and learning
+    delivery operations. L2 left null because the surface spans scheduling and delivery of tutorial sessions
+    without naming a single narrower sub-capability.
+- tag: Invoices
+  spec_file: tutorcruncher-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.75
+  evidence: GET /invoices/ "List invoices"; POST /invoices/{id}/take-payment/ "Take payment for an invoice"
+  reason: Customer invoice issuance and collection of payment against those invoices is accounts receivable
+    management.
+- tag: Clients
+  spec_file: tutorcruncher-clients-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /clients/ "List clients"; POST /clients/{id}/ "Update a client"; schema "Client"
+  reason: CRUD over the paying customer master records of the tutoring business — customer data management.
+    Clients here are the billing parties (distinct from recipients/students), so customer data is the
+    honest reading.
+- tag: Payments
+  spec_file: tutorcruncher-payments-api-openapi.yml
+  capability_id: BC-200
+  capability_id_l1: BC-200
+  capability_name: Financial Management
+  confidence: 0.7
+  evidence: GET /payment-orders/ "List payment orders (contractor payouts)"; GET /proforma-invoices/ "List
+    proforma invoices (credit requests)"; POST /adhoccharges/ "Create an ad hoc charge"
+  reason: Financial accounting operations spanning both contractor payouts (payables) and proforma invoicing/charge
+    collection (receivables); L2 left null because the surface straddles AP and AR.
