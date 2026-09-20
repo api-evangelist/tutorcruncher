@@ -253,6 +253,8 @@ apis:
   - type: Documentation
     url: https://help.tutorcruncher.com/en/articles/4843207-tutorcruncher-sockets
 common:
+- type: Pricing
+  url: https://tutorcruncher.com/pricing/us
 - type: CapabilityMap
   url: capabilities/tutorcruncher-capability-edges.yml
   name: TutorCruncher Business Capability Map
