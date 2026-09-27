@@ -70,6 +70,23 @@ paths:
           description: Payment taken.
 components:
   schemas:
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            type: object
     Invoice:
       type: object
       properties:
@@ -92,23 +109,6 @@ components:
           - string
           - 'null'
           format: date-time
-    PaginatedList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            type: object
   parameters:
     Page:
       name: page

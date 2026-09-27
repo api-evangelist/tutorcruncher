@@ -124,23 +124,6 @@ paths:
           description: Recipient removed.
 components:
   schemas:
-    Service:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        status:
-          type: string
-        dft_charge_type:
-          type: string
-        dft_charge_rate:
-          type: string
-        subject:
-          type:
-          - integer
-          - 'null'
     PaginatedList:
       type: object
       properties:
@@ -158,6 +141,23 @@ components:
           type: array
           items:
             type: object
+    Service:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+        dft_charge_type:
+          type: string
+        dft_charge_rate:
+          type: string
+        subject:
+          type:
+          - integer
+          - 'null'
   parameters:
     Page:
       name: page
