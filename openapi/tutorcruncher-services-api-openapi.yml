@@ -124,23 +124,6 @@ paths:
           description: Recipient removed.
 components:
   schemas:
-    PaginatedList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            type: object
     Service:
       type: object
       properties:
@@ -158,6 +141,23 @@ components:
           type:
           - integer
           - 'null'
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            type: object
   parameters:
     Page:
       name: page
