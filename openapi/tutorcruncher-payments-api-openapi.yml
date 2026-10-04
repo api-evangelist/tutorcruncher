@@ -116,6 +116,14 @@ paths:
         '200':
           description: List of ad hoc charge categories.
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The object ID.
+      schema:
+        type: integer
   schemas:
     PaginatedList:
       type: object
@@ -134,14 +142,6 @@ components:
           type: array
           items:
             type: object
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The object ID.
-      schema:
-        type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey
