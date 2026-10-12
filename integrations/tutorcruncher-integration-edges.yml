@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/tutorcruncher/integrations
+- https://n8n.io/integrations/tutorcruncher/
+- https://composio.dev/toolkits/tutorcruncher
+- https://monid.ai/tools/tutorcruncher
+checked:
+- https://composio.dev/toolkits/tutorcruncher
+- https://monid.ai/tools/tutorcruncher
+- https://n8n.io/integrations/tutorcruncher/
+- https://zapier.com/apps/tutorcruncher/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
