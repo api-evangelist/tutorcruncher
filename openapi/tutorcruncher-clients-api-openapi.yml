@@ -93,6 +93,23 @@ paths:
           description: Client deleted.
 components:
   schemas:
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            type: object
     Client:
       type: object
       properties:
@@ -118,31 +135,7 @@ components:
             type: integer
       required:
       - last_name
-    PaginatedList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            type: object
   parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The object ID.
-      schema:
-        type: integer
     Page:
       name: page
       in: query
@@ -150,11 +143,18 @@ components:
       description: Page number for paginated results (100 objects per page).
       schema:
         type: integer
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The object ID.
+      schema:
+        type: integer
   responses:
-    NotFound:
-      description: Object not found.
     Unauthorized:
       description: Missing or invalid API key.
+    NotFound:
+      description: Object not found.
   securitySchemes:
     tokenAuth:
       type: apiKey

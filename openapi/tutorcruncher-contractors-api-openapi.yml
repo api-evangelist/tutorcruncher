@@ -111,13 +111,6 @@ paths:
                 $ref: '#/components/schemas/PaginatedList'
 components:
   parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The object ID.
-      schema:
-        type: integer
     Page:
       name: page
       in: query
@@ -125,7 +118,31 @@ components:
       description: Page number for paginated results (100 objects per page).
       schema:
         type: integer
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The object ID.
+      schema:
+        type: integer
   schemas:
+    PaginatedList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            type: object
     Contractor:
       type: object
       properties:
@@ -149,23 +166,6 @@ components:
             type: integer
       required:
       - last_name
-    PaginatedList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            type: object
   securitySchemes:
     tokenAuth:
       type: apiKey
